@@ -14,14 +14,17 @@ class PersonService {
     fun findAll() : List<PersonDto> = dao.findAll().map { p -> PersonDto.from(p) }
 
     fun save(dto : PersonDto) : PersonDto{
-        val person = dao.save(Person.of(dto))
-        return PersonDto.from(person)
+        return PersonDto.from( dao.save(Person.of(dto)) )
     }
 
+    /**
+     * 솔트 메서드
+     */
     fun sort(sortDto: SortDto): MutableList<PersonDto>{
         val list = sortDto.persons
         val sortBy = sortDto.sortBy
         val sortOrder = sortDto.sortOrder
+
         // TODO: 제출 시간이 부족해서 우선 작성 했는데 좀 더 뱡향을 고민해보겠습니다
         when{
             sortBy == "id" && sortOrder == "asc" -> list.sortWith( compareBy<PersonDto> { it.id })
@@ -37,6 +40,9 @@ class PersonService {
         return list
     }
 
+    /**
+     * 필터 메서드
+     */
     fun filter(filterDto: FilterDto):  MutableList<PersonDto>{
         val list = filterDto.persons
         var _list = mutableListOf<PersonDto>()
@@ -46,6 +52,7 @@ class PersonService {
         val heightCutoff = filterDto.heightCutoff
         val except = filterDto.except
 
+        // null 확인 후 _list 를 계속 변경해주는 방식
         ageCutoff?.let { _list = list.filter { it.age > ageCutoff }.toMutableList() }
         heightCutoff?.let{ _list = _list.filter { it.height > heightCutoff }.toMutableList() }
         except?.let { _list = _list.filter { !except.contains(it.id) }.toMutableList()  }
