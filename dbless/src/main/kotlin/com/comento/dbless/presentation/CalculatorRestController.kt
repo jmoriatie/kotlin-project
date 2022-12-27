@@ -16,11 +16,8 @@ class CalculatorRestController {
 
     @GetMapping("/generate/{range}")
     fun generate(@PathVariable range : String) : ResponseEntity<Any>{
-        val numbers = range.split("~")
 
-        println(numbers[0].toDouble())
-        println(numbers[1].toDouble())
-        val randomNum = service.getRandomNum(numbers[0], numbers[1])
+        val randomNum = service.getRandomNum(range)
 
         return ResponseEntity.ok().body(randomNum)
     }
