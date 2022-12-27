@@ -71,3 +71,6 @@ Content-Type: application/json
     "heightCutoff": 170,
     "except": ["ID1323"]
 }
+
+### calulator
+GET localhost:8080/api/v1/calculator/generate/1~2.2
