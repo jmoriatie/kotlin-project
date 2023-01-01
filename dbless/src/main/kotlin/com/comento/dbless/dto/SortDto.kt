@@ -1,7 +1,7 @@
 package com.comento.dbless.dto
 
-class SortDto {
-    lateinit var persons : MutableList<PersonDto>
-    lateinit var sortBy : String
-    lateinit var sortOrder : String
-}
+data class SortDto(
+    val persons : MutableList<PersonDto>,
+    val sortBy : String,
+    val sortOrder : String
+)

@@ -1,8 +1,10 @@
 package com.comento.dbless.dto
 
-class FilterDto {
-    lateinit var persons : MutableList<PersonDto>
-    var ageCutoff : Int? = null
-    var heightCutoff : Int? = null
-    var except : MutableList<String>? = null
-}
+// data class 로 변경
+// val로 작성
+data class FilterDto(
+    val persons : MutableList<PersonDto>,
+    val ageCutoff : Int? = null,
+    val heightCutoff : Int? = null,
+    val except : MutableList<String>? = null
+)

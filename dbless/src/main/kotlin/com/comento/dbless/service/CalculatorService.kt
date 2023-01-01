@@ -23,7 +23,6 @@ class CalculatorService {
      * 랜덤 double
      */
     private fun getRandomDouble(min : Double, max : Double) : Double{
-        println("double")
         return Random.nextDouble(min, max)
     }
 
@@ -31,7 +30,6 @@ class CalculatorService {
      * 랜덤 int
      */
     private fun getRandomInt(min : Int, max : Int) : Int{
-        println("Int")
         return Random.nextInt(min, max)
     }
 
@@ -39,10 +37,13 @@ class CalculatorService {
      * 소숫점 아래 길이 반환
      */
     private fun doubleLength(minStr : String, maxStr : String) : Int{
+       // TODO : String Extension function 으로 작성 String
         return when{
             minStr.contains(".") ->  minStr.split(".")[1].length
             maxStr.contains(".") -> maxStr.split(".")[1].length
-            else -> if(minStr.split(".")[1].length > maxStr.split(".")[1].length) minStr.split(".")[1].length else maxStr.split(".")[1].length
+            else -> if(minStr.split(".")[1].length > maxStr.split(".")[1].length)
+                minStr.split(".")[1].length
+            else maxStr.split(".")[1].length
         }
     }
 }
