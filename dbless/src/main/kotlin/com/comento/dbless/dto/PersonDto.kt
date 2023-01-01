@@ -2,7 +2,7 @@ package com.comento.dbless.dto
 
 import com.comento.dbless.domain.Person
 
-class PersonDto private constructor(
+data class PersonDto(
     val id : String,
     val name : String,
     val age : Int,
