@@ -1,5 +1,6 @@
 package com.comento.dbless.presentation
 
+import com.comento.dbless.domain.RandomNumber
 import com.comento.dbless.service.CalculatorService
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
@@ -15,7 +16,6 @@ class CalculatorRestController {
 
     @GetMapping("/generate/{range}")
     fun generate(@PathVariable range : String) : ResponseEntity<Any>{
-        val randomNum = service.getRandomNum(range)
-        return ResponseEntity.ok().body(randomNum)
+        return ResponseEntity.ok().body( RandomNumber.create(range).getRandomNum() )
     }
 }

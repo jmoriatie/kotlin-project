@@ -4,8 +4,7 @@ import com.comento.dbless.dto.FilterDto
 import com.comento.dbless.dto.PersonDto
 import com.comento.dbless.dto.SortDto
 
-class Persons private constructor(persons: MutableList<PersonDto>){
-    private val persons: MutableList<PersonDto> = persons
+class Persons private constructor(private val persons: MutableList<PersonDto>){
 
     fun sort(sortBy: String, sortOrder: String): List<PersonDto>{
         when{
@@ -25,7 +24,8 @@ class Persons private constructor(persons: MutableList<PersonDto>){
     fun filter(ageCutoff: Int?, heightCutoff: Int?, except: MutableList<String>?):  List<PersonDto>{
         //list 체이닝 형태로 진행 + 예외처리
         var afterFilteringList = persons.filter { it.age > (ageCutoff ?: 0) }
-            .filter { it.height > (heightCutoff ?: 0) }
+                                        .filter { it.height > (heightCutoff ?: 0) }
+
         if(except != null) afterFilteringList = afterFilteringList.filter { !except.contains(it.id) }
 
         return afterFilteringList

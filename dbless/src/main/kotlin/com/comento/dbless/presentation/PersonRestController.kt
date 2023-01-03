@@ -25,9 +25,8 @@ class PersonRestController {
     }
 
     @PostMapping("/save")
-    fun save(@RequestBody personDto: PersonDto) : Boolean{
-        service.save(personDto)
-        return true
+    fun save(@RequestBody personDto: PersonDto) : PersonDto{
+        return service.save(personDto)
     }
 
     @PostMapping("/sort")
