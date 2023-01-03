@@ -31,11 +31,12 @@ class PersonRestController {
 
     @PostMapping("/sort")
     fun sort(@RequestBody sortDto: SortDto) : ResponseEntity<Any>{
-        return ResponseEntity.ok().body( Persons.create(sortDto).sort() )
+        return ResponseEntity.ok().body( Persons.create(sortDto.persons).sort(sortDto.sortBy, sortDto.sortOrder) )
     }
 
     @PostMapping("/filter")
     fun filter(@RequestBody filterDto: FilterDto) : ResponseEntity<Any>{
-        return ResponseEntity.ok().body(service.filter(filterDto))
+        val (persons, ageCutoff, heightCutoff, except) = filterDto
+        return ResponseEntity.ok().body( Persons.create(persons).filter(ageCutoff, heightCutoff, except) )
     }
 }
