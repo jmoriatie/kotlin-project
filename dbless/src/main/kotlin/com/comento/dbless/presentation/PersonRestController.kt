@@ -1,5 +1,6 @@
 package com.comento.dbless.presentation
 
+import com.comento.dbless.domain.Persons
 import com.comento.dbless.dto.FilterDto
 import com.comento.dbless.dto.PersonDto
 import com.comento.dbless.dto.SortDto
@@ -30,7 +31,7 @@ class PersonRestController {
 
     @PostMapping("/sort")
     fun sort(@RequestBody sortDto: SortDto) : ResponseEntity<Any>{
-        return ResponseEntity.ok().body(service.sort(sortDto))
+        return ResponseEntity.ok().body( Persons.create(sortDto).sort() )
     }
 
     @PostMapping("/filter")

@@ -16,32 +16,6 @@ class PersonService {
         return PersonDto.from( dao.save(Person.of(dto)) )
     }
 
-    /**
-     * 솔트 메서드
-     */
-    fun sort(sortDto: SortDto): MutableList<PersonDto>{
-        return sortList(sortDto);
-    }
-
-    private fun sortList(sortDto : SortDto): MutableList<PersonDto>{
-        val list = sortDto.persons
-        val sortBy = sortDto.sortBy
-        val sortOrder = sortDto.sortOrder
-        //sortedBy 로 변경
-        when{
-            sortBy == "id" && sortOrder == "asc" -> list.sortBy { it.id }
-            sortBy == "name" && sortOrder == "asc" -> list.sortBy { it.name }
-            sortBy == "age" && sortOrder == "asc" -> list.sortBy { it.age }
-            sortBy == "height" && sortOrder == "asc" -> list.sortBy { it.height }
-
-            sortBy == "id" && sortOrder == "des" -> list.sortByDescending{ it.id }
-            sortBy == "name" && sortOrder == "des" -> list.sortByDescending{ it.name }
-            sortBy == "age" && sortOrder == "des" -> list.sortByDescending{ it.age }
-            sortBy == "height" && sortOrder == "des" -> list.sortByDescending{ it.height}
-        }
-
-        return list
-    }
 
     /**
      * 필터 메서드
