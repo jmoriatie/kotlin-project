@@ -4,6 +4,7 @@ import com.comento.dbless.domain.Persons
 import com.comento.dbless.dto.FilterDto
 import com.comento.dbless.dto.PersonDto
 import com.comento.dbless.dto.SortDto
+import com.comento.dbless.logger
 import com.comento.dbless.service.PersonService
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
@@ -31,11 +32,13 @@ class PersonRestController {
 
     @PostMapping("/sort")
     fun sort(@RequestBody sortDto: SortDto) : ResponseEntity<Any>{
+        logger.info{"PersonSortDto : $sortDto"}
         return ResponseEntity.ok().body( Persons.create(sortDto.persons).sort(sortDto.sortBy, sortDto.sortOrder) )
     }
 
     @PostMapping("/filter")
     fun filter(@RequestBody filterDto: FilterDto) : ResponseEntity<Any>{
+        logger.info { "PersonFilterDto : $filterDto" }
         val (persons, ageCutoff, heightCutoff, except) = filterDto
         return ResponseEntity.ok().body( Persons.create(persons).filter(ageCutoff, heightCutoff, except) )
     }
