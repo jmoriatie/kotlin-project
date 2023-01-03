@@ -1,5 +1,6 @@
 package com.comento.dbless.domain
 
+import java.util.IllegalFormatException
 import kotlin.random.Random
 
 class RandomNumber(private val range: String) {
@@ -9,9 +10,13 @@ class RandomNumber(private val range: String) {
         val minStr = numbers[0]
         val maxStr = numbers[1]
 
-        return when((minStr.contains(".") || maxStr.contains("."))){ // 더블인지 확인
-            true ->  this.getRandomDoubleToString(minStr.toDouble(), maxStr.toDouble(), this.doubleLength(minStr, maxStr) ) // Double 랜덤숫자, 소숫점 짜르기
-            else ->  this.getRandomIntToString(minStr.toInt(), maxStr.toInt()).toString() // Int 랜덤숫자
+        return  try{
+            when((minStr.contains(".") || maxStr.contains("."))){ // 더블인지 확인
+                true ->  this.getRandomDoubleToString(minStr.toDouble(), maxStr.toDouble(), this.doubleLength(minStr, maxStr) ) // Double 랜덤숫자, 소숫점 짜르기
+                false ->  this.getRandomIntToString(minStr.toInt(), maxStr.toInt()) // Int 랜덤숫자
+            }
+        }catch (e: Exception){
+            throw IllegalArgumentException("맞지 않는 메서드", e)
         }
     }
 
