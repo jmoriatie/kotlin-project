@@ -1,11 +1,25 @@
 package com.comento.dbless.dto
 
 import com.comento.dbless.domain.Person
+import javax.validation.constraints.Max
+import javax.validation.constraints.Min
+import javax.validation.constraints.NotBlank
+import javax.validation.constraints.NotEmpty
+import javax.validation.constraints.NotNull
 
 data class PersonDto(
+    @field:NotBlank
     val id : String,
+
+    @field:NotBlank
     val name : String,
+
+    @field:Min(0)
+    @field:Max(100)
     val age : Int,
+
+    @field:Min(0)
+    @field:Max(300)
     val height : Int) {
 
     companion object{
