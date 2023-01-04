@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
+import javax.validation.Valid
 
 @RestController
 @RequestMapping("/api/v1/persons")
@@ -25,18 +26,18 @@ class PersonRestController {
     }
 
     @PostMapping("/save")
-    fun save(@RequestBody personDto: PersonDto) : PersonDto{
+    fun save(@Valid @RequestBody personDto: PersonDto) : PersonDto{
         return service.save(personDto)
     }
 
     @PostMapping("/sort")
-    fun sort(@RequestBody sortDto: SortDto) : ResponseEntity<Any>{
+    fun sort(@RequestBody @Valid sortDto: SortDto) : ResponseEntity<Any>{
         logger.info{"PersonSortDto : $sortDto"}
         return ResponseEntity.ok().body( Persons.create(sortDto.persons).sort(sortDto.sortBy, sortDto.sortOrder) )
     }
 
     @PostMapping("/filter")
-    fun filter(@RequestBody filterDto: FilterDto) : ResponseEntity<Any>{
+    fun filter(@RequestBody @Valid filterDto: FilterDto) : ResponseEntity<Any>{
         logger.info { "PersonFilterDto : $filterDto" }
         val (persons, ageCutoff, heightCutoff, except) = filterDto
         return ResponseEntity.ok().body( Persons.create(persons).filter(ageCutoff, heightCutoff, except) )
