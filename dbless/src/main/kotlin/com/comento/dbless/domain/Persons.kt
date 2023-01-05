@@ -1,8 +1,6 @@
 package com.comento.dbless.domain
 
-import com.comento.dbless.dto.FilterDto
 import com.comento.dbless.dto.PersonDto
-import com.comento.dbless.dto.SortDto
 
 class Persons private constructor(private val persons: MutableList<PersonDto>){
 
@@ -17,6 +15,7 @@ class Persons private constructor(private val persons: MutableList<PersonDto>){
             sortBy == "name" && sortOrder == "des" -> this.persons.sortByDescending{ it.name }
             sortBy == "age" && sortOrder == "des" -> this.persons.sortByDescending{ it.age }
             sortBy == "height" && sortOrder == "des" -> this.persons.sortByDescending{ it.height}
+            else -> throw IllegalArgumentException("틀린 인자값 입니다")
         }
         return persons
     }
@@ -32,6 +31,6 @@ class Persons private constructor(private val persons: MutableList<PersonDto>){
     }
 
     companion object{
-        fun create(persons: MutableList<PersonDto>): Persons = Persons(persons)
+        fun create(persons: List<PersonDto>): Persons = Persons(persons as MutableList<PersonDto>)
     }
 }

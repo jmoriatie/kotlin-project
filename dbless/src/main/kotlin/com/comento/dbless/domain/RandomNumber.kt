@@ -10,7 +10,7 @@ class RandomNumber(private val range: String) {
         val minStr = numbers[0]
         val maxStr = numbers[1]
 
-        return  try{
+        return try{
             when((minStr.contains(".") || maxStr.contains("."))){ // 더블인지 확인
                 true ->  this.getRandomDoubleToString(minStr.toDouble(), maxStr.toDouble(), this.doubleLength(minStr, maxStr) ) // Double 랜덤숫자, 소숫점 짜르기
                 false ->  this.getRandomIntToString(minStr.toInt(), maxStr.toInt()) // Int 랜덤숫자

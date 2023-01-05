@@ -24,6 +24,9 @@ dependencies {
     // log4j2 의존성 추가
     implementation("org.springframework.boot:spring-boot-starter-log4j2")
 
+    // validation
+    implementation("org.springframework.boot:spring-boot-starter-validation")
+
     modules {
         module("org.springframework.boot:spring-boot-starter-logging") {
             replacedBy("org.springframework.boot:spring-boot-starter-log4j2", "Use Log4j2 instead of Logback")

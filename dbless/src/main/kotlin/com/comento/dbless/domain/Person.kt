@@ -1,10 +1,20 @@
 package com.comento.dbless.domain
 
 import com.comento.dbless.dto.PersonDto
+import javax.validation.constraints.*
 
-class Person private constructor(val id : String) {
+class Person private constructor(
+    @field:NotBlank val id : String
+) {
+    @field:NotBlank
     var name : String = ""
+
+    @field:Min(0)
+    @field:Max(100)
     var age : Int = -1
+
+    @field:Min(0)
+    @field:Max(300)
     var height : Int = -1
 
     companion object{
