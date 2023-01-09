@@ -1,11 +1,14 @@
 ### findAll
 GET http://localhost:8080/api/v1/countries/all
 
-### findByName korea
+### ### findByName japan : 정상
+GET localhost:8080/api/v1/countries/japan/capital-city
+
+### findByName korea : 정상
 GET http://localhost:8080/api/v1/countries/Korea/capital-city
 
-### findByName ko
+### findByName ko : 비정상
 GET http://localhost:8080/api/v1/countries/ko/capital-city
 
-### findByName CaNaDa
+### findByName CaNaDa : 대소문자
 GET http://localhost:8080/api/v1/countries/CaNaDa /capital-city
