@@ -28,8 +28,6 @@ class ExceptionRestControllerAdvice {
 
     @ExceptionHandler(Exception::class)
     fun emptyResultDataAccessException(ex: Exception): ResponseEntity<ErrorResponse>{
-        println(DefaultErrorAttributes.ERROR_ATTRIBUTE)
-        println(DefaultErrorAttributes().)
         return ResponseEntity.ok().body(ErrorResponse())
     }
 }

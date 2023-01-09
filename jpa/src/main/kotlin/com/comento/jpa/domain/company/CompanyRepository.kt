@@ -1,4 +1,6 @@
 package com.comento.jpa.domain.company
 
-interface CompanyRepository {
+import org.springframework.data.repository.CrudRepository
+
+interface CompanyRepository: CrudRepository<Company, Long>{
 }
