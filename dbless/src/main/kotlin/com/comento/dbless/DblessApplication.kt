@@ -1,12 +1,14 @@
 package com.comento.dbless
 
+import mu.KLogging
+import mu.KotlinLogging
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
+internal val logger = KotlinLogging.logger{}
+
 @SpringBootApplication
 class DblessApplication
-
-//TODO : Logger 만들기
 //TODO : Swagger 붙이기
 
 fun main(args: Array<String>) {
