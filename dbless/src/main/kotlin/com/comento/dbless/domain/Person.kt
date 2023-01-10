@@ -1,7 +1,9 @@
 package com.comento.dbless.domain
 
 import com.comento.dbless.dto.PersonDto
+import javax.validation.constraints.*
 
+<<<<<<< HEAD
 class Person private constructor(val id : String) {
     val name : String
         get() = this._name
@@ -13,6 +15,21 @@ class Person private constructor(val id : String) {
     var _name : String = ""
     var _age : Int = -1
     var _height : Int = -1
+=======
+class Person private constructor(
+    @field:NotBlank val id : String
+) {
+    @field:NotBlank
+    var name : String = ""
+
+    @field:Min(0)
+    @field:Max(100)
+    var age : Int = -1
+
+    @field:Min(0)
+    @field:Max(300)
+    var height : Int = -1
+>>>>>>> main
 
     companion object{
         fun from(id : String,

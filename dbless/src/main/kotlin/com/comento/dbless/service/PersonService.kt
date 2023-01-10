@@ -13,8 +13,9 @@ class PersonService {
     fun findAll() : List<PersonDto> = dao.findAll().map { p -> PersonDto.from(p) }
 
     fun save(dto : PersonDto) : PersonDto{
-        return PersonDto.from( dao.save(Person.of(dto)) )
+        return PersonDto.from( dao.save( Person.of(dto) ) )
     }
+<<<<<<< HEAD
 
     /**
      * 솔트 메서드
@@ -57,6 +58,8 @@ class PersonService {
 
         return afterFilteringList
     }
+=======
+>>>>>>> main
 }
 
 
