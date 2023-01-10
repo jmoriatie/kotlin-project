@@ -7,7 +7,6 @@ import javax.persistence.Id
 
 @Entity
 class Country(
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val zipCode: Long?,
