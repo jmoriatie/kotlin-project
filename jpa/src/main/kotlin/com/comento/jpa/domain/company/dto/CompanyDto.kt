@@ -1,4 +1,4 @@
-package com.comento.jpa.presentation.dto.company
+package com.comento.jpa.domain.company.dto
 
 data class CompanyDto(
     val name: String,

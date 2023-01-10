@@ -5,7 +5,6 @@ plugins {
     kotlin("jvm")
     kotlin("plugin.spring")
     kotlin("plugin.jpa")
-
 }
 
 dependencies {
@@ -21,5 +20,4 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 
     implementation("com.github.consoleau:kassava:2.1.0")
-
 }
