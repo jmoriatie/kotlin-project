@@ -1,9 +1,9 @@
 package com.comento.jpa.domain.person.dto
 
 class PersonResponse(
-    val resultTypes: MutableList<Int> = mutableListOf(),
-    val personIds: MutableList<Int> = mutableListOf()
+    val resultTypes: MutableList<Long> = mutableListOf(),
+    val personIds: MutableList<Long> = mutableListOf()
 ){
-    fun addResultTypes(result: Int) = this.resultTypes.add(result)
-    fun addPersonIds(result: Int) = this.personIds.add(result)
+    fun addResultTypes(result: Long) = this.resultTypes.add(result)
+    fun addPersonIds(result: Long) = this.personIds.add(result)
 }
