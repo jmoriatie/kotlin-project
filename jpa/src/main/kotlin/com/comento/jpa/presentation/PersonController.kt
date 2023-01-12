@@ -1,7 +1,9 @@
 package com.comento.jpa.presentation
 
+import com.comento.jpa.domain.person.dto.BlindDateDto
 import com.comento.jpa.domain.person.dto.PersonDto
 import com.comento.jpa.domain.person.dto.PersonResponse
+import com.comento.jpa.exception.custom_exceptions.CustomEmptyResultDataAccessException
 import com.comento.jpa.service.PersonService
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.PutMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
@@ -28,6 +31,14 @@ class PersonController(
     @PutMapping
     fun update(@RequestBody personDtoList: List<PersonDto>): PersonResponse = service.update(personDtoList)
 
-//    @DeleteMapping
-//    fun delete()
+    @GetMapping("blind-date/{ageDiff}")
+    fun coupleMatching(@PathVariable ageDiff: Int,
+                       @RequestParam(defaultValue = "") country: String): List<Pair<BlindDateDto, BlindDateDto>> {
+        val mathchCouples = service.mathchCouples(ageDiff, country)
+        return if(!mathchCouples.isEmpty()){
+            mathchCouples
+        }else {
+            throw CustomEmptyResultDataAccessException()
+        }
+    }
 }

@@ -1,9 +1,7 @@
 package com.comento.jpa.domain.person.dto
 
-enum class Gender(
-    val code: Int,
-) {
-    UNKNOWN(0), MALE(1), FEMALE(2);
+enum class Gender {
+    UNKNOWN, MALE, FEMALE;
 
     companion object {
         operator fun invoke(gender: String): Gender {
