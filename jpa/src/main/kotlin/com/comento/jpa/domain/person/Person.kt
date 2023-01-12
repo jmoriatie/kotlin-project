@@ -1,8 +1,8 @@
 package com.comento.jpa.domain.person
 
+import com.comento.jpa.domain.person.dto.BlindDateDto
 import com.comento.jpa.domain.person.dto.Gender
 import com.comento.jpa.domain.person.dto.PersonDto
-import javax.persistence.Column
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
@@ -33,6 +33,11 @@ class Person(
         country = personDto.country.uppercase().trim()
 
         return this.personId
+    }
+
+    override fun toString(): String {
+        return "Person(personId=${this.personId}, age=${this.age}, height=${this.height}, weight=${this.weight}, name=${this.name}, " +
+            "gender=${this.gender}, isMarried=${this.isMarried}, company=${this.company}, country=${this.country})"
     }
 
     companion object {
