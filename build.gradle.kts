@@ -20,6 +20,7 @@ noArg {
     annotation("javax.persistence.Entity")
 }
 
+
 buildscript {
     repositories {
         mavenCentral()

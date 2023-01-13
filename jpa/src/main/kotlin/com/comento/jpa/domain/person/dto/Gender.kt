@@ -6,7 +6,6 @@ enum class Gender {
     companion object {
         operator fun invoke(gender: String): Gender {
             if (gender == "null") return UNKNOWN
-
             return values().find { it.name == gender.uppercase() } ?: throw RuntimeException("없는 성별 입니다.")
         }
     }

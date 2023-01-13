@@ -6,5 +6,6 @@ import org.springframework.stereotype.Repository
 @Repository
 interface CountryRepository: CrudRepository<Country, Long?> {
 
-    fun findByName(name: String): Country
+    // 값이 없을 수 있음
+    fun findByName(name: String): Country?
 }

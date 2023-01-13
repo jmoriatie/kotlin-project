@@ -33,7 +33,7 @@ class PersonController(
 
     @GetMapping("blind-date/{ageDiff}")
     fun coupleMatching(@PathVariable ageDiff: Int,
-                       @RequestParam(defaultValue = "") country: String): List<Pair<BlindDateDto, BlindDateDto>> {
+                       @RequestParam(defaultValue = "") country: String): List<Pair<BlindDateDto, BlindDateDto>> { // TODO: country nullable 로 변경
         val mathchCouples = service.mathchCouples(ageDiff, country)
         return if(!mathchCouples.isEmpty()){
             mathchCouples
