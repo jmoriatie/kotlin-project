@@ -31,7 +31,7 @@ class PersonService(
                 false -> response.addResultTypes(1)
                 true -> response.addResultTypes(0)
             }
-            response.addPersonIds(repo.save(Person.from(it)).personId ?: 0L)
+            response.addPersonIds(repo.save(Person.from(it)).id)
         }
         return response
     }
@@ -40,7 +40,7 @@ class PersonService(
     fun findByPersonId(personId: Long): Person = repo.findByPersonId(personId)
     fun update(personDtoList: List<PersonDto>): PersonResponse = this.save(personDtoList)
 
-    fun mathchCouples(ageDiff: Int, country: String): List<Pair<BlindDateDto, BlindDateDto>> {
+    fun mathchCouples(ageDiff: Int, country: String?): List<Pair<BlindDateDto, BlindDateDto>> {
         val (males: List<Person>, females: List<Person>) = findPersons(country)
         return filteringCouples(ageDiff, males, females)
     }
@@ -48,10 +48,10 @@ class PersonService(
     /**
      * 남, 녀 리스트 추출
      */
-    private fun findPersons(country: String): Pair<List<Person>, List<Person>> {
+    private fun findPersons(country: String?): Pair<List<Person>, List<Person>> {
         val males: List<Person>
         val females: List<Person>
-        when (country == "") {
+        when (country.isNullOrEmpty()) {
             true -> {
                 males = repo.findByGenderAndAgeIsNotNull(Gender.MALE)
                 females = repo.findByGenderAndAgeIsNotNull(Gender.FEMALE)

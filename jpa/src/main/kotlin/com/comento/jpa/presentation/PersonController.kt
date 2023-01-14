@@ -31,14 +31,10 @@ class PersonController(
     @PutMapping
     fun update(@RequestBody personDtoList: List<PersonDto>): PersonResponse = service.update(personDtoList)
 
+    // country nullable 로 변경
     @GetMapping("blind-date/{ageDiff}")
-    fun coupleMatching(@PathVariable ageDiff: Int,
-                       @RequestParam(defaultValue = "") country: String): List<Pair<BlindDateDto, BlindDateDto>> { // TODO: country nullable 로 변경
-        val mathchCouples = service.mathchCouples(ageDiff, country)
-        return if(!mathchCouples.isEmpty()){
-            mathchCouples
-        }else {
-            throw CustomEmptyResultDataAccessException()
-        }
+    fun coupleMatching(@PathVariable(name = "ageDiff") ageDiff: Int,
+                       @RequestParam country: String?): List<Pair<BlindDateDto, BlindDateDto>> {
+        return service.mathchCouples(ageDiff, country)
     }
 }
