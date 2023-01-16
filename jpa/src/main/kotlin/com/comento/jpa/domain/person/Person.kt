@@ -1,5 +1,6 @@
 package com.comento.jpa.domain.person
 
+import com.comento.jpa.domain.company.Company
 import com.comento.jpa.domain.person.dto.Gender
 import com.comento.jpa.domain.person.dto.PersonDto
 import javax.persistence.Column
@@ -7,6 +8,7 @@ import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
 import javax.persistence.Id
+import javax.persistence.OneToMany
 
 @Entity
 class Person(
@@ -16,7 +18,7 @@ class Person(
     weight: Int?,
     name: String,
     isMarried: Boolean?,
-    company: String?,
+    company: MutableList<Company>?,
     country: String,
     gender: Gender? = Gender.UNKNOWN
 ) {
@@ -28,7 +30,7 @@ class Person(
     @Column(name = "person_id", nullable = true)
     private var _id: Long? = _id
 
-    @Column(name = "person_id", nullable = false)
+    @Column(name = "age", nullable = false)
     var age: Int? = age
 
     @Column(name = "height", nullable = true)
@@ -43,8 +45,9 @@ class Person(
     @Column(name = "is_married", nullable = true)
     var isMarried: Boolean? = isMarried
 
+    @OneToMany
     @Column(name = "company", nullable = true)
-    var company: String? = company
+    var company: MutableList<Company>? = company
 
     @Column(name = "country", nullable = false )
     var country: String = country
@@ -76,7 +79,7 @@ class Person(
                 personDto.isMarried,
                 personDto.company,
                 personDto.country.uppercase().trim(),
-                Gender(personDto.gender ?: "UNKNOWN"), // enum operator invoke 메서드 생략가능
+                Gender(personDto.gender ?: Gender.UNKNOWN ) // enum operator invoke 메서드 생략가능
             )
     }
 }

@@ -1,5 +1,6 @@
 package com.comento.jpa.domain.person.dto
 
+import com.comento.jpa.domain.company.Company
 import com.fasterxml.jackson.databind.PropertyNamingStrategies
 import com.fasterxml.jackson.databind.annotation.JsonNaming
 
@@ -11,11 +12,10 @@ data class PersonDto(
     val age: Int?,
     val height: Int?,
     val weight: Int?,
-    val gender: String?,
+    val gender: Gender?,
     val isMarried: Boolean?,
-    val company: String?
+    val company: MutableList<Company>?
 ) {
-
     constructor(dto: PersonDto) : this(
         personId = dto.personId,
         name = dto.name,
