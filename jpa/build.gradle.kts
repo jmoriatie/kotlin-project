@@ -19,8 +19,18 @@ plugins {
     kotlin("jvm")
     kotlin("plugin.spring")
     kotlin("plugin.jpa")
+
+    kotlin("plugin.allopen") version "1.3.71"
+    kotlin("plugin.noarg") version "1.3.71"
 }
 
+allOpen {
+    annotation("javax.persistence.Entity")
+}
+
+noArg {
+    annotation("javax.persistence.Entity")
+}
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")

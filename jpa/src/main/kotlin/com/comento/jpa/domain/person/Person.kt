@@ -5,6 +5,7 @@ import com.comento.jpa.domain.person.dto.Gender
 import com.comento.jpa.domain.person.dto.PersonDto
 import javax.persistence.Column
 import javax.persistence.Entity
+import javax.persistence.FetchType
 import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
 import javax.persistence.Id
@@ -45,11 +46,11 @@ class Person(
     @Column(name = "is_married", nullable = true)
     var isMarried: Boolean? = isMarried
 
-    @OneToMany
-    @Column(name = "company", nullable = true)
+    @OneToMany(fetch = FetchType.LAZY)
+    @Column(name = "company", nullable = true, updatable = true)
     var company: MutableList<Company>? = company
 
-    @Column(name = "country", nullable = false )
+    @Column(name = "country", nullable = false)
     var country: String = country
         protected set
 
