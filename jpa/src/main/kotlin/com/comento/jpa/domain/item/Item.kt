@@ -28,16 +28,16 @@ abstract class Item(
     var name: String = name
 
     @Column(name = "price", nullable = false)
-    val price: Int = 0
+    var price: Int = 0
 
     @Column(name = "quantity", nullable = false)
-    val quantity: Int = 0
+    var quantity: Int = 0
 
 //    @Column(name = "kind", nullable = false)
 //    val kind: Int = kind
 
     @Column(name = "description", nullable = true)
-    val description: String = ""
+    var description: String = ""
 
     val id: Int
         get() = _id ?: throw IllegalStateException()
