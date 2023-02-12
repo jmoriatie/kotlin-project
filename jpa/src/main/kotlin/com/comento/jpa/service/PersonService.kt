@@ -37,7 +37,7 @@ class PersonService(
     }
 
     fun findAll(): Iterable<Person> = repo.findAll()
-    fun findByPersonId(personId: Long): Person = repo.findByPersonId(personId)
+    fun findByPersonId(personId: Long): Person = repo.findBy_id(personId)
     fun update(personDtoList: List<PersonDto>): PersonResponse = this.save(personDtoList)
 
     fun mathchCouples(ageDiff: Int, country: String?): List<Pair<BlindDateDto, BlindDateDto>> {

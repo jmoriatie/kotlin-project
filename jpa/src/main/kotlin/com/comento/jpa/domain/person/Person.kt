@@ -60,10 +60,6 @@ class Person(
     val id: Long
         get() = _id ?: throw IllegalStateException()
 
-    fun setCountry(country: String){
-        this.country = country
-    }
-
     override fun toString(): String {
         return "Person(personId=${this.id}, age=${this.age}, height=${this.height}, weight=${this.weight}, name=${this.name}, " +
             "gender=${this.gender}, isMarried=${this.isMarried}, company=${this.company}, country=${this.country})"

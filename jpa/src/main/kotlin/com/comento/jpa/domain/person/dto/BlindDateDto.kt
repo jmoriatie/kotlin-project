@@ -1,5 +1,6 @@
 package com.comento.jpa.domain.person.dto
 
+import com.comento.jpa.domain.company.Company
 import com.comento.jpa.domain.person.Person
 import com.fasterxml.jackson.databind.PropertyNamingStrategies
 import com.fasterxml.jackson.databind.annotation.JsonNaming
@@ -11,7 +12,7 @@ data class BlindDateDto(
     val age: Int,
     val height: Int?,
     val weight: Int?,
-    val company: String?,
+    val company: MutableList<Company>?,
     val country: String
 ){
 
