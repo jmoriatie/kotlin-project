@@ -21,11 +21,11 @@ plugins {
 //}
 
 
-buildscript {
-    repositories {
-        mavenCentral()
-    }
-}
+//buildscript {
+//    repositories {
+//        mavenCentral()
+//    }
+//}
 
 allprojects {
     group = "com.comento"

@@ -17,11 +17,11 @@ plugins {
     id("org.springframework.boot")
     id("io.spring.dependency-management")
     kotlin("jvm")
-    kotlin("plugin.spring")
-    kotlin("plugin.jpa")
+    kotlin("plugin.spring") //"plugin.allopen" 포함
+    kotlin("plugin.jpa") //"plugin.noarg" 포함
 
-    kotlin("plugin.allopen") version "1.3.71"
-    kotlin("plugin.noarg") version "1.3.71"
+//    kotlin("plugin.allopen") version kotlinVersion
+//    kotlin("plugin.noarg") version kotlinVersion
 }
 
 allOpen {
@@ -30,6 +30,12 @@ allOpen {
 
 noArg {
     annotation("javax.persistence.Entity")
+}
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
 }
 
 dependencies {
